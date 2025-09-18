@@ -28,13 +28,13 @@ def equalize_image(img1: np.ndarray, save_file: str="None") -> np.ndarray:
     axes[0, 0].bar(range(256), hist, color="blue", alpha=0.7, width=1)
     axes[0, 0].set_title("Исходник")
 
-    axes[0, 1].plot(cdf, color="red")
+    axes[0, 1].plot(cdf/cdf.max(), color="red")
     axes[0, 1].set_title("Исходник")
 
     axes[1, 0].bar(range(256), hist_eq, color="green", alpha=0.7, width=1)
     axes[1, 0].set_title("Эквализация")
 
-    axes[1, 1].plot(eq_cdf, color="yellow")
+    axes[1, 1].plot(eq_cdf/eq_cdf.max(), color="yellow")
     axes[1, 1].set_title("Эквализация")
     plt.show()
 
@@ -56,6 +56,8 @@ def plot_func(img:np.ndarray):
 
 
     plt.plot(np.arange(256), cdf_normalized, label="Функция преобразования")
+    plt.ylabel("Новое значение")
+    plt.xlabel("Уровень яркости")
     plt.show()
 
 
